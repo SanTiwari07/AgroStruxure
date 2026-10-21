@@ -25,7 +25,7 @@ the caller context and then makes a real call.
 
 ### Two frontend strings (the only sanctioned edit to `frontend/`)
 
-The freeze in `CLAUDE.md` still stands — these were changed on an explicit owner
+The freeze in the legacy architecture notes still stands — these were changed on an explicit owner
 decision, and neither touches the HTTP contract, component structure or CSS:
 
 - The Krishi Mitra badge showed **"Connecting"** when no field was selected,

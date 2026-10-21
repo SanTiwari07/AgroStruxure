@@ -67,7 +67,7 @@ All 11 tested Go packages pass. The code is a well-built prototype of **one anal
 
 ## 2. Ground rules
 
-1. **The frozen-contract rule in `CLAUDE.md` is lifted.** The new `/v1` API and `apps/web` are built alongside the legacy app. The legacy app keeps running as a reference and is deleted at the end of Phase 4.
+1. **The frozen-contract rule in the legacy architecture notes is lifted.** The new `/v1` API and `apps/web` are built alongside the legacy app. The legacy app keeps running as a reference and is deleted at the end of Phase 4.
 2. **P0 only.** Anything in §13 of this document waits for the pilot.
 3. **Cloud last.** No one provisions or depends on GCP before Phase 5. Every cloud service sits behind a Go interface with a local implementation (§3).
 4. **Contract first.** `contracts/openapi.json` is frozen at the end of Sprint 2. Frontend builds against the mock server until endpoints land.

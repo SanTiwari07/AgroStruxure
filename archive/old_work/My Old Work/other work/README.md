@@ -333,7 +333,6 @@ Pragya/
 | Document | What it covers |
 |---|---|
 | [`AGENTS.md`](./AGENTS.md) | Rules for everyone (and every coding agent) working in the repository; folder ownership |
-| [`CLAUDE.md`](./CLAUDE.md) | Legacy app architecture and conventions |
 | [`docs/platform/STATUS.md`](./docs/platform/STATUS.md) | Platform progress against the plan, open items and decisions |
 | [`docs/platform/LOCAL_STACK.md`](./docs/platform/LOCAL_STACK.md) | Running the platform and its tests locally (Docker or native) |
 | [`docs/adr/`](./docs/adr/) | Architecture decision records 0001–0018 |
