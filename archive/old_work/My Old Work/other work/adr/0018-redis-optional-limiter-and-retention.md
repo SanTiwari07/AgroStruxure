@@ -19,7 +19,7 @@ that function, so no configuration or code mistake can lower them.
 
 - RESP2 over TCP, TLS optional (`REDIS_TLS_ENABLED`, on by default outside dev and refused off there), `AUTH` from `REDIS_AUTH_SECRET` (a `config.Secret`,
   never in an error or a log). Five commands: `PING`, `GET`, `SET … PX`, `DEL`, and one atomic `EVAL` (increment, set the expiry only when the key is
-  new: a fixed window that can never live forever). No new dependency (AGENTS.md rule 6).
+  new: a fixed window that can never live forever). No new dependency (RULES.md rule 6).
 - **Deadlines:** every call is bounded by `REDIS_OPERATION_TIMEOUT_MS` (20..1000, default 100) and by the caller's context. Socket deadlines use the wall
   clock; only the breaker takes an injected clock.
 - **Circuit breaker:** after 3 consecutive connection failures the breaker opens; calls fail immediately (no dial) for a 2 s cool-down; then exactly one

@@ -30,7 +30,7 @@ SigV4/presign client, fake-gcs-server over the GCS JSON API with `curl`. Both pr
 guarantees the port needs are create-only writes and reads pinned to what was verified, and **both emulators enforce those**; the emulators' shared weak
 spots (copy destination and delete preconditions) are avoided by design: `Promote` is a **pinned read from quarantine + create-only write to ready**,
 never a server-side copy, and deletes are treated as idempotent cleanup. The adapter speaks the plain GCS JSON API over `net/http` (no Google SDK
-before Sprint 11, AGENTS.md rule), so in Phase 5 the same adapter runs against Cloud Storage with an OAuth token supplied by the environment.
+before Sprint 11, RULES.md rule), so in Phase 5 the same adapter runs against Cloud Storage with an OAuth token supplied by the environment.
 
 What fake-gcs-server does not give us — an enforced signed URL — is supplied by the adapter, which is *stricter* than either emulator: the local upload
 and download URLs point at a small **capability proxy** (`internal/adapters/storage.LocalProxy`, mounted by `cmd/api` only in `ENVIRONMENT=dev` with a

@@ -1,7 +1,7 @@
 # CURRENT DECK VISUAL & ARCHITECTURAL AUDIT
 **Project:** AgroStruxure™ Pitch Deck Rebuild (Yuva Yodha Energy Tech Hackathon 2026)  
 **Date:** October 3, 2026  
-**Auditor:** Antigravity Visual & Technical Architecture Team  
+**Auditor:** Visual & Technical Architecture Team  
 
 ---
 

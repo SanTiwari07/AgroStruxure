@@ -70,7 +70,7 @@ is not empty**: nothing has written an invitation before Sprint 5, so no deploye
 
 ## Known limits
 
-- **Internationalised domain names** are compared as normalised Unicode, not converted to punycode: that needs a new dependency (AGENTS.md rule 6). Both
+- **Internationalised domain names** are compared as normalised Unicode, not converted to punycode: that needs a new dependency (RULES.md rule 6). Both
   sides pass through the same function, so equal input matches equal input; a user whose token carries the punycode form of an address invited in Unicode
   form (or the reverse) would not match. Revisit if the pilot markets need it.
 - The HMAC lookup is deterministic per (tenant, address, key): within one tenant, two invitations to the same address have the same hash. That is

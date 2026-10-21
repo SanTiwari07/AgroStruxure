@@ -1,6 +1,6 @@
 # Contract change record (`contracts/openapi.json`)
 
-The contract is frozen at each release candidate (AGENTS.md rule 2). A change needs P1 sign-off, a new lock (`contracts/openapi.lock`) and a
+The contract is frozen at each release candidate (RULES.md rule 2). A change needs P1 sign-off, a new lock (`contracts/openapi.lock`) and a
 note here. Plan decision **E6**: rc1 stays frozen; change requests are collected and land as a batch (rc2 at the end of S6, rc3 candidate at the end
 of S9, final at S10).
 

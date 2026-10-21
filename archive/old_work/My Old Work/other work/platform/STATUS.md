@@ -10,7 +10,7 @@ this page does not repeat them.
 
 | Task | What | Status | Record |
 |---|---|---|---|
-| 1.1–1.4 | Layout (`cmd/{api,worker,tile,maintenance}`, `internal/{platform,domain,adapters,apiv1}`), chi/goose/sqlc, local stack, `AGENTS.md` | Done | ADR 0001–0003, 0006, [LOCAL_STACK.md](LOCAL_STACK.md) |
+| 1.1–1.4 | Layout (`cmd/{api,worker,tile,maintenance}`, `internal/{platform,domain,adapters,apiv1}`), chi/goose/sqlc, local stack, `RULES.md` | Done | ADR 0001–0003, 0006, [LOCAL_STACK.md](LOCAL_STACK.md) |
 | 1.5, 1.12 | OpenAPI contract (82 P0 operations), frozen | Done — `1.0.0-rc2` | [CONTRACT_CHANGES.md](CONTRACT_CHANGES.md), `contracts/openapi.lock` |
 | 1.6 | Fate of the legacy SQL scripts | Done — frozen in `scripts/db/legacy/` until 1.24 | ADR 0004 |
 | 1.7–1.8 | Migrations with RLS `ENABLE`+`FORCE`, runtime role without `BYPASSRLS` | Done — T01 | ADR 0002, `migrations/` |

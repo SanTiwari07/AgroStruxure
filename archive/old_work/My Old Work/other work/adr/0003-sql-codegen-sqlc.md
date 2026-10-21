@@ -36,7 +36,7 @@ sqlc is a build-time tool only; it is not a runtime dependency. It is run with
 
 ## Consequences
 
-- **AGENTS.md rule 3 (no unscoped `GetByID`).** sqlc's generated `Queries` accepts
+- **RULES.md rule 3 (no unscoped `GetByID`).** sqlc's generated `Queries` accepts
   any `DBTX`, which would include a bare pool. The `internal/adapters/postgres`
   package therefore exposes queries only through constructors that take the
   `pgx.Tx` produced by `internal/platform/db.WithTenant`; the generated

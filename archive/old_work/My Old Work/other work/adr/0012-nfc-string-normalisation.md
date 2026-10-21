@@ -1,6 +1,6 @@
 # ADR 0012 — NFC string normalisation: promote `golang.org/x/text` to a direct dependency
 
-- **Status:** Accepted (P1, 2026-09-20). AGENTS.md rule 6: "No new third-party dependency without an ADR."
+- **Status:** Accepted (P1, 2026-09-20). RULES.md rule 6: "No new third-party dependency without an ADR."
 - **Owner:** P1 (platform)
 - **Spec:** 6182 §06.2 — "Strings normalized UTF-8 NFC and trimmed except tokens/cursors."
 

@@ -216,7 +216,7 @@ All features listed are implemented and verified in the current codebase.
 
 The repository holds two applications side by side. The **legacy app** (single-tenant heatmap
 and onboarding) is the running reference; the **platform** (multi-tenant `/v1` API) is being
-built alongside it per [`AGENTS.md`](./AGENTS.md) and replaces the legacy app at the end of
+built alongside it per [`RULES.md`](./RULES.md) and replaces the legacy app at the end of
 Phase 4.
 
 ```
@@ -332,7 +332,7 @@ Pragya/
 
 | Document | What it covers |
 |---|---|
-| [`AGENTS.md`](./AGENTS.md) | Rules for everyone (and every coding agent) working in the repository; folder ownership |
+| [`RULES.md`](./RULES.md) | Rules for everyone working in the repository; folder ownership |
 | [`docs/platform/STATUS.md`](./docs/platform/STATUS.md) | Platform progress against the plan, open items and decisions |
 | [`docs/platform/LOCAL_STACK.md`](./docs/platform/LOCAL_STACK.md) | Running the platform and its tests locally (Docker or native) |
 | [`docs/adr/`](./docs/adr/) | Architecture decision records 0001–0018 |
@@ -520,7 +520,7 @@ The Sentinel-1 pipeline is fully independent of cloud cover conditions, enabling
 
 ## Contributing
 
-Read [`AGENTS.md`](./AGENTS.md) before opening a pull request: it defines folder ownership, the
+Read [`RULES.md`](./RULES.md) before opening a pull request: it defines folder ownership, the
 eight working rules and what "done" means. CI (`.github/workflows/ci.yml`) must be green to merge.
 
 ### Architectural Rules

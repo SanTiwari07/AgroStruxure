@@ -2,7 +2,7 @@
 
 **Owner:** P4 (Backend — Operational Workflows)  
 **Scope:** `internal/domain/{weather,alerts,scouting,activities,reports,notifications,usage,privacy}`, `internal/adapters/weather`, `internal/adapters/postgres`, `internal/apiv1/{activities,alerts,scouting,usage,weather,reports,notifications,sync}`, `cmd/worker` (reports & alerts/sync duties).  
-**Baseline Specs:** `6182.md` v1.0.0 (§03, §04, §06, §07, §09, §17), `TEAM_WORK_DIVISION.md`, `contracts/openapi.json` (`contract-v1.0.0-rc2`), `AGENTS.md`.
+**Baseline Specs:** `6182.md` v1.0.0 (§03, §04, §06, §07, §09, §17), `TEAM_WORK_DIVISION.md`, `contracts/openapi.json` (`contract-v1.0.0-rc2`), `RULES.md`.
 
 ---
 
@@ -32,7 +32,7 @@ All P4 implementations must strictly adhere to the repository's core architectur
    - Domain code in `internal/domain/<name>` declares repository and provider interfaces (**ports**).
    - Concrete implementations live in `internal/adapters/postgres` or `internal/adapters/weather`.
    - Domain packages never import adapters.
-2. **Mandatory Tenant Scoping (`AGENTS.md` Rule 3 & §07.3):**
+2. **Mandatory Tenant Scoping (`RULES.md` Rule 3 & §07.3):**
    - Every database transaction must use `WithTenant` / `WithActor` which binds `set_config('app.tenant_id', $1, true)`.
    - No unscoped `SELECT` or `GetByID` without tenant enforcement.
    - Cross-tenant queries return `404 Not Found`, never `403`.
@@ -43,7 +43,7 @@ All P4 implementations must strictly adhere to the repository's core architectur
    - Inspections submitted offline are deduplicated by `offline_operation_id`.
    - Replays must return the already persisted record without error.
    - Superseding edits require `supersedes_id` and match `base_version`.
-5. **No 0 for Missing / Masked Values (`AGENTS.md` Rule 5):**
+5. **No 0 for Missing / Masked Values (`RULES.md` Rule 5):**
    - Absent weather parameters or unobserved crop metrics serialize as `null` / omitted, never `0`.
 
 ---

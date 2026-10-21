@@ -99,7 +99,7 @@ Rule: **no domain package imports a concrete adapter.** Phase 5 swaps implementa
 
 | ID | Role | Primary requirements | Owns (CODEOWNERS) |
 |---|---|---|---|
-| **P1** | Tech lead / platform backend | PR-01, PR-27 (platform parts) | `cmd/api`, `internal/platform/**`, `internal/domain/{tenancy,identity,audit}`, `internal/adapters/{postgres,redis,storage,queue}`, `migrations/`, `contracts/`, `docker-compose.yml`, `AGENTS.md` |
+| **P1** | Tech lead / platform backend | PR-01, PR-27 (platform parts) | `cmd/api`, `internal/platform/**`, `internal/domain/{tenancy,identity,audit}`, `internal/adapters/{postgres,redis,storage,queue}`, `migrations/`, `contracts/`, `docker-compose.yml`, `RULES.md` |
 | **P2** | Geospatial engineer | PR-05, PR-06 (data), PR-08 (detection) | `internal/gee/**`, `internal/pipeline/**`, `internal/domain/observations`, `cmd/worker/analysis`, `cmd/tile` |
 | **P3** | Backend — fields and farm data | PR-02, PR-03, PR-04, onboarding, legacy data | `internal/domain/{farms,fields,seasons,imports,soil,consent}`, `tools/migrate-legacy` |
 | **P4** | Backend — operational workflows | PR-07, PR-08 (lifecycle), PR-09, PR-10, PR-11, PR-12, PR-25, PR-26 | `internal/domain/{weather,alerts,scouting,activities,reports,notifications,usage,privacy}`, `internal/adapters/weather` |
@@ -129,7 +129,7 @@ Rule: **no domain package imports a concrete adapter.** Phase 5 swaps implementa
 
 | Sprint | P1 Platform | P2 Geospatial | P3 Fields | P4 Workflows | P5 Frontend | P6 Frontend + QA |
 |---|---|---|---|---|---|---|
-| **S1** (wk 1–2) | Repo layout, local stack, `AGENTS.md`, OpenAPI draft | Cloud Score+ proof, fixtures, index spec | Legacy → new table map | Weather adapter (Open-Meteo), alert rule spec | Next.js static shell, routes, tokens | CI, test harness, isolation suite skeleton |
+| **S1** (wk 1–2) | Repo layout, local stack, `RULES.md`, OpenAPI draft | Cloud Score+ proof, fixtures, index spec | Legacy → new table map | Weather adapter (Open-Meteo), alert rule spec | Next.js static shell, routes, tokens | CI, test harness, isolation suite skeleton |
 | **S2** (wk 3–4) | Tenancy migrations, RLS, auth verifier, tx pattern. **OpenAPI frozen** | NDRE/RECI/MSAVI, 20 m handling, per-field stats | Farms, fields, boundary versioning | Weather storage and field bindings | API client from OpenAPI, sign-in, tenant switch | T01/T02 tests, fill untested legacy packages |
 | **S3** (wk 5–6) | Idempotency, ETag, cursors, audit, outbox, jobs + leases | Quality classes (usable/partial/insufficient) | Field groups, archive, field API complete | Entitlements & usage tables | Field list, MapLibre, draw/edit | T03/T08 tests, E2E: sign-in → field |
 | **S4** (wk 7–8) | Queue dispatcher, storage adapter, reaper | Pipeline in worker jobs, EE adapter ops | Seasons, crop cycles, overlap lock | Admission checks before costly work | Scene timeline, index chart | E2E harness vs exported build |
@@ -158,7 +158,7 @@ Each task lists **what**, **where**, **done when** and **spec**.
 | 1.1 | New repository layout; keep legacy under `cmd/server` + `internal/httpapi` until S10 | `cmd/{api,worker,tile}`, `internal/{platform,domain,adapters}` | `go build ./...` passes; legacy `make verify` still passes | §06.1 |
 | 1.2 | Choose and pin `chi`, `goose`, `sqlc`; record as ADRs | `docs/adr/` | ADR merged | §06.1, §13 |
 | 1.3 | Local stack | `docker-compose.yml` | One command starts PostGIS, Redis, MinIO, Firebase emulator, API, worker | §3 of this doc |
-| 1.4 | `AGENTS.md` rules for Antigravity | repo root | Merged; every engineer has read it | §11 of this doc |
+| 1.4 | `RULES.md` repository rules | repo root | Merged; every engineer has read it | §11 of this doc |
 | 1.5 | OpenAPI draft for PR-01 – PR-12, PR-25 – PR-27 resources from spec §14 and §15 | `contracts/openapi.json` | Validates; mock server (Prism) runs | §06.2, §14, §15 |
 | 1.6 | Decide the fate of `schema.sql` vs `mindstrix_setup.sql` | `docs/adr/` | ADR merged | AUDIT M4 |
 
@@ -406,7 +406,7 @@ Each task lists **what**, **where**, **done when** and **spec**.
 
 | From → To | What | Due |
 |---|---|---|
-| P1 → all | Local stack, `AGENTS.md`, OpenAPI draft + mock | End S1 |
+| P1 → all | Local stack, `RULES.md`, OpenAPI draft + mock | End S1 |
 | P1 → all | Frozen OpenAPI, tx helper, auth verifier, RLS | End S2 |
 | P3 → P1 | Legacy → new table mapping | End S1 |
 | P1 → P2, P4 | Jobs + leases, outbox | End S3 |
@@ -493,8 +493,8 @@ A demo alone is not done.
 | Friday | Demo on the local stack; scope decisions | All |
 | Sprint end | Review + retro; update this document | All |
 
-### `AGENTS.md` rules (Antigravity)
-1. Only edit folders owned by the person running the agent (see §4).
+### `RULES.md` rules
+1. Only edit folders you own (see §4).
 2. Never edit `contracts/`, `migrations/` or `internal/platform/` without P1 review.
 3. Every repository query uses the tenant transaction helper; no unscoped `GetByID`.
 4. Every new Earth Engine call ships with a recorded fixture.
@@ -518,7 +518,7 @@ Cycle time, blocked days, escaped defects, open handoffs, scope changes.
 | Small fields / cloud cover make data insufficient | P2 | Many pilot fields "insufficient" | Quality classes shown honestly; scouting fallback |
 | Legacy data loss | P3 | Migration mismatch | Two rehearsals on a copy; idempotent script; row-count checks |
 | Offline conflicts lose drafts | P6 / P4 | T15 failures | Operation ledger, explicit conflict UI, device tests |
-| Agents overwriting each other | P1 | Merge conflicts across folders | CODEOWNERS, `AGENTS.md`, small daily PRs |
+| Contributors overwriting each other | P1 | Merge conflicts across folders | CODEOWNERS, `RULES.md`, small daily PRs |
 | Scope creep into AI/VRA | All | Requests before pilot | §13 list is closed until the pilot starts |
 | One person out for a sprint | All | Absence | Pair on critical-path items (P1↔P3, P2↔P4, P5↔P6) |
 
